@@ -1,0 +1,7 @@
+{
+  "name": "annuaire",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
