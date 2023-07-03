@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start"> 
+      <ion-back-button defaultHref="/personne"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      <ion-label>{{personne.firstName}} {{personne.lastName}}  </ion-label> 
+      <ion-icon name="call" *ngIf="personne.phone != ''"></ion-icon>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="stacked">Prénom</ion-label> 
+    <ion-input [(ngModel)]="personneSav.firstName"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Nom</ion-label> 
+    <ion-input [(ngModel)]="personneSav.lastName"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Téléphone</ion-label> 
+    <ion-input type="tel" [(ngModel)]="personneSav.phone"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Profession</ion-label> 
+    <ion-input [(ngModel)]="personneSav.job"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Favorit</ion-label> 
+    <!-- <ion-input [(ngModel)]="personneSav.favory"></ion-input>            value="favorit"-->
+    <ion-segment (ionChange)="segmentChanged($event)" value={{personneSav.favory}}>
+      <ion-segment-button value="Favory">
+        <ion-label>Favorit</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="Half">
+        <ion-label>Moyen</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="">
+        <ion-label>Aucun</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-item>
+  <ion-item>
+    <ion-button (click)="save()">Enregistrer</ion-button> 
+    <ion-button (click)="cancel()">Annuler</ion-button> 
+  </ion-item>
+</ion-content>

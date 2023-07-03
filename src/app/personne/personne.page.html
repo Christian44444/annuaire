@@ -1,0 +1,43 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>personne</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">personne</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div id="personne">
+    <ion-list>
+      <ion-item-sliding *ngFor="let personne of personnes" > 
+        <ion-item>
+          <ion-icon name="person-outline" slot="start"></ion-icon>
+          <ion-label>{{personne.firstName}} {{personne.lastName}}</ion-label>
+          <!-- <ion-icon name="call" *ngIf="personne.phone != ''"></ion-icon> 
+          <ion-icon name="call-outline" *ngIf="personne.phone === ''"></ion-icon> --> 
+          <ion-icon name="star" *ngIf="personne.favory === 'Favory'"></ion-icon> 
+          <ion-icon name="star-half" *ngIf="personne.favory === 'Half' "></ion-icon> 
+          <ion-buttons slot="end">
+              <ion-button (click)="gestionActionSheet(personne)" >
+                <ion-icon slot="icon-only" name="ellipsis-horizontal-outline"></ion-icon>
+              </ion-button>
+              <ion-button (click)="goToPersonneDetail(personne)">
+                <ion-icon slot="icon-only" name="chevron-forward-outline"></ion-icon>
+              </ion-button>
+          </ion-buttons>
+        </ion-item>
+
+        <ion-item-options side="end">
+          <ion-item-option color="danger" (click)="gestionDeleteAlert(personne)">Delete</ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </div>
+
+</ion-content>
