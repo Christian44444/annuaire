@@ -45,5 +45,6 @@
   <ion-item>
     <ion-button (click)="save()">Enregistrer</ion-button> 
     <ion-button (click)="cancel()">Annuler</ion-button> 
+    <ion-button *ngIf="personne.phone !== undefined" (click)="launchCall(personne.phone)">Tel</ion-button>
   </ion-item>
 </ion-content>

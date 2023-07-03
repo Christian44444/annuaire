@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ActionSheetController, AlertController, IonicModule, ToastController } from '@ionic/angular';
 import { Personne, PersonneService } from '../service/personne.service';
 import { Router } from '@angular/router';
+import { CallnumberService } from '../service/callnumber.service';
 
 @Component({
   selector: 'app-personne',
@@ -26,7 +27,7 @@ export class PersonnePage implements OnInit {
   public alertController: AlertController = inject(AlertController);
   public toastController: ToastController = inject(ToastController);
   public router: Router = inject(Router);
-
+  callNumberService: CallnumberService = inject(CallnumberService);
   constructor() { }
 
   /**
@@ -118,5 +119,8 @@ export class PersonnePage implements OnInit {
     this.router.navigateByUrl('personne-detail');
   }
 
+  launchCall(phone: string) {
+    this.callNumberService.launchCall(phone);
+  }
 
 }

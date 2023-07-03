@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { Personne, PersonneService } from '../service/personne.service';
+import { CallnumberService } from '../service/callnumber.service';
 
 @Component({
   selector: 'app-personne-detail',
@@ -15,6 +16,7 @@ export class PersonneDetailPage implements OnInit {
   public personne!: Personne;
   public personneSav!: Personne;
   public personneService: PersonneService = inject(PersonneService);
+  callNumberService: CallnumberService = inject(CallnumberService);
   constructor() {}
 
   ngOnInit() {
@@ -32,6 +34,9 @@ export class PersonneDetailPage implements OnInit {
   segmentChanged(ev: any) {
     console.log(ev);
     this.personneSav.favory = ev.detail.value;
+  }
+  launchCall(phone: string) {
+    this.callNumberService.launchCall(phone);
   }
 
 }

@@ -12,15 +12,15 @@ export class PersonneService {
     {id: '3', firstName: 'Viviane',    lastName: 'MICHAUD', favory: ''  },
     {id: '4', firstName: 'Victor',   lastName: 'MICHAUD', job: 'Etudiant', image: '', favory: 'Half'},
     {id: '5', firstName: 'Lucas', lastName: 'MICHAUD', favory: ''},
-    {id: '5', firstName: 'Emmanuelle', lastName: 'MICHAUD', job: 'Chargée de mission', favory: ''}
+    {id: '5', firstName: 'Emmanuelle', lastName: 'MICHAUD', job: 'Chargée de mission', favory: '', phone: '0635321400'}
   ]
   constructor() { }
 
   getAll():Personne[]{
     return this.mockPersonne;
   }
-  setCurent(student: Personne){
-    this.currentPersonne = student;
+  setCurent(personne: Personne){
+    this.currentPersonne = personne;
   }
   
   getCurrent():Personne {
