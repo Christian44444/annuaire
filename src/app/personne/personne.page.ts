@@ -43,7 +43,7 @@ export class PersonnePage implements OnInit {
   ngOnInit() {
 
     this.personnes = this.personneService.getAll();
-    this.usedPersonnes = [...this.personnes];
+    this.usedPersonnes = this.personnes;
   }
 
   async gestionActionSheet(personne: Personne) {
@@ -60,9 +60,14 @@ export class PersonnePage implements OnInit {
         {
           text: 'Moyennement favorit',
           icon: 'star-half',
+          handler: () => { this.markHalfFavory(personne); 
+          },
+        },
+        {
+          text: 'Non favorit',
+          icon: 'remove-circle-outline',
           handler: () => { this.markNotFavory(personne); 
           },
-
         },
         {
           text: 'Supprimer',
@@ -85,7 +90,8 @@ export class PersonnePage implements OnInit {
   }
 
   markFavory (personne: Personne) {personne.favory = 'Favory'; }
-  markNotFavory (personne: Personne) {personne.favory = 'Half'; }
+  markHalfFavory (personne: Personne) {personne.favory = 'Half'; }
+  markNotFavory (personne: Personne) {personne.favory = ''; }
   
   deletePersonne(personne: Personne) {
     this.personnes = this.personnes.filter((p) => p.id !== personne.id);
@@ -118,7 +124,7 @@ export class PersonnePage implements OnInit {
       {
         message: personne.firstName + ' ' + personne.lastName + ' a été supprimée.',
         position: 'top',
-        duration: 3000
+        duration: 2000
       });
       toast.present();
   }

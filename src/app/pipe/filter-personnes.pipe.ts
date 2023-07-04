@@ -1,7 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Personne } from '../service/personne.service';
 
-// Attention au standalone car il n'y a pas de gestion de modules dans notre version standalone
+// Attention au standalone car il n'y a pas de gestion de modules dans notre applicaation ionic choix du standalone au ionic start <mon app>
 @Pipe({
   name: 'filterPersonnes',
   standalone: true

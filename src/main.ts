@@ -6,6 +6,9 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
 import { environment } from './environments/environment';
+// Pour le plugging PWA
+import { defineCustomElements } from '@ionic/pwa-elements/loader';
+
 
 if (environment.production) {
   enableProdMode();
@@ -18,3 +21,5 @@ bootstrapApplication(AppComponent, {
     provideRouter(routes),
   ],
 });
+
+defineCustomElements(window);

@@ -1,4 +1,5 @@
 import { Injectable, inject } from '@angular/core';
+// Voire localstorage ou indexedDB plus simple pour la persistence
 import { Preferences } from '@capacitor/preferences';
 
 @Injectable({
@@ -13,12 +14,12 @@ export class PersonneService {
     {id: '3', firstName: 'Viviane',    lastName: 'MICHAUD', favory: ''  },
     {id: '4', firstName: 'Victor',   lastName: 'MICHAUD', job: 'Etudiant', image: '', favory: 'Half'},
     {id: '5', firstName: 'Lucas', lastName: 'MICHAUD', favory: ''},
-    {id: '6', firstName: 'Emmanuelle', lastName: 'MICHAUD', job: 'Chargée de mission', favory: '', phone: '0635321400'}
+    {id: '6', firstName: 'Emmanuelle', lastName: 'MICHAUD', job: 'Chargée de mission', favory: '', phone: '0635321400', image:'assets/image/plus.png'}
   ]
   private allReadyCharged: string = 'false';
   
   constructor() { }
-
+  // Preferences get
   private getValue = async () => { 
     const { value } = await Preferences.get({key: 'chargement'});
     if (value == null) {
@@ -28,6 +29,7 @@ export class PersonneService {
       this.allReadyCharged = 'true';
     }
   }
+  // Preferences set
   private setValue =  async () => { 
       await Preferences.set({
       key: 'chargement',

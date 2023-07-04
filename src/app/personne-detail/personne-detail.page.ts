@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { Personne, PersonneService } from '../service/personne.service';
 import { CallnumberService } from '../service/callnumber.service';
+// Utilisation Camera nécessite des ajouts de permission dans le Manifest d'android
+import { Camera, CameraResultType } from '@capacitor/camera';
 
 @Component({
   selector: 'app-personne-detail',
@@ -30,7 +32,7 @@ export class PersonneDetailPage implements OnInit {
   cancel() {
     Object.assign(this.personneSav, this.personne);
   }
-
+  // Nécessite FormsModule et IonicModule
   segmentChanged(ev: any) {
     console.log(ev);
     this.personneSav.favory = ev.detail.value;
@@ -38,5 +40,16 @@ export class PersonneDetailPage implements OnInit {
   launchCall(phone: string) {
     this.callNumberService.launchCall(phone);
   }
-
+  chargePicture() {
+    Camera.getPhoto({
+      quality: 100,
+      allowEditing: false,
+      resultType: CameraResultType.DataUrl,
+     }).then((value) => {
+        // Here you get the image as result.
+        this.personneSav.image = value.dataUrl
+     }).catch((e) => {
+      //Noting if canceled picture 
+    });
+  }
 }
