@@ -4,7 +4,8 @@
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <ion-title>personnes</ion-title>
-  </ion-toolbar>
+    <ion-searchbar [(ngModel)]="value" [ngModelOptions]="{standalone: true}"></ion-searchbar>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
@@ -15,12 +16,10 @@
   </ion-header>
   <div id="personne">
     <ion-list>
-      <ion-item-sliding *ngFor="let personne of personnes" > 
+      <ion-item-sliding *ngFor="let personne of usedPersonnes | filterPersonnes:value" > 
         <ion-item>
           <ion-icon name="person-outline" slot="start"></ion-icon>
           <ion-label>{{personne.firstName}} {{personne.lastName}}</ion-label>
-          <!-- <ion-icon name="call" *ngIf="personne.phone != ''"></ion-icon> 
-          <ion-icon name="call-outline" *ngIf="personne.phone === ''"></ion-icon> --> 
           <ion-icon name="star" *ngIf="personne.favory === 'Favory'"></ion-icon> 
           <ion-icon name="star-half" *ngIf="personne.favory === 'Half' "></ion-icon> 
           <ion-buttons slot="end">

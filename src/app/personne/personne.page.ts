@@ -1,17 +1,18 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, Pipe } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActionSheetController, AlertController, IonicModule, ToastController } from '@ionic/angular';
 import { Personne, PersonneService } from '../service/personne.service';
 import { Router } from '@angular/router';
 import { CallnumberService } from '../service/callnumber.service';
+import { FilterPersonnesPipe } from '../pipe/filter-personnes.pipe';
 
 @Component({
   selector: 'app-personne',
   templateUrl: './personne.page.html',
   styleUrls: ['./personne.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule]
+  imports: [IonicModule, CommonModule, FormsModule, FilterPersonnesPipe]
 })
 
 /**
@@ -19,7 +20,7 @@ import { CallnumberService } from '../service/callnumber.service';
  * Appelle le détail pour modifier ajouter ou supprimer une personne 
  */
 export class PersonnePage implements OnInit {
-  public personnes!: Personne[]; 
+  public personnes: Personne[] = []; 
   private personneService: PersonneService = inject(PersonneService);
   public isActionSheetOpen = false;
   
@@ -28,13 +29,21 @@ export class PersonnePage implements OnInit {
   public toastController: ToastController = inject(ToastController);
   public router: Router = inject(Router);
   callNumberService: CallnumberService = inject(CallnumberService);
-  constructor() { }
+
+  // La variable de filtre sert pour Nom Prénom et Profession
+  public usedPersonnes!: Personne[]; 
+  filterPersonnes: Pipe = FilterPersonnesPipe; 
+  value: string = '';
+  
+  constructor() {}
 
   /**
    * Initialisation du carnet d'adresse
    */
   ngOnInit() {
+
     this.personnes = this.personneService.getAll();
+    this.usedPersonnes = [...this.personnes];
   }
 
   async gestionActionSheet(personne: Personne) {
@@ -122,5 +131,4 @@ export class PersonnePage implements OnInit {
   launchCall(phone: string) {
     this.callNumberService.launchCall(phone);
   }
-
 }
