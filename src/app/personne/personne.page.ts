@@ -31,7 +31,6 @@ export class PersonnePage implements OnInit {
   callNumberService: CallnumberService = inject(CallnumberService);
 
   // La variable de filtre sert pour Nom Prénom et Profession
-  public usedPersonnes!: Personne[]; 
   filterPersonnes: Pipe = FilterPersonnesPipe; 
   value: string = '';
   
@@ -41,9 +40,7 @@ export class PersonnePage implements OnInit {
    * Initialisation du carnet d'adresse
    */
   ngOnInit() {
-
-    this.personnes = this.personneService.getAll();
-    this.usedPersonnes = this.personnes;
+  this.personnes = this.personneService.getAll();
   }
 
   async gestionActionSheet(personne: Personne) {

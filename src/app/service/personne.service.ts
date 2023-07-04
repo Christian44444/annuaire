@@ -14,7 +14,7 @@ export class PersonneService {
     {id: '3', firstName: 'Viviane',    lastName: 'MICHAUD', favory: ''  },
     {id: '4', firstName: 'Victor',   lastName: 'MICHAUD', job: 'Etudiant', image: '', favory: 'Half'},
     {id: '5', firstName: 'Lucas', lastName: 'MICHAUD', favory: ''},
-    {id: '6', firstName: 'Emmanuelle', lastName: 'MICHAUD', job: 'Chargée de mission', favory: '', phone: '0635321400', image:'assets/image/plus.png'}
+    {id: '6', firstName: 'Emmanuelle', lastName: 'MICHAUD', job: 'Chargée de mission', favory: '', phone: '0633333333', image:'assets/image/plus.png'}
   ]
   private allReadyCharged: string = 'false';
   

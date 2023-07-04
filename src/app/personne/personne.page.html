@@ -16,7 +16,7 @@
   </ion-header>
   <div id="personne">
     <ion-list>
-      <ion-item-sliding *ngFor="let personne of usedPersonnes | filterPersonnes:value" > 
+      <ion-item-sliding *ngFor="let personne of personnes | filterPersonnes:value" > 
         <ion-item>
           <ion-icon *ngIf="personne.image === undefined || personne.image === '' " name="person-outline" slot="start"></ion-icon>
           <ion-avatar *ngIf="personne.image !== undefined && personne.image !== '' "  slot="start">
