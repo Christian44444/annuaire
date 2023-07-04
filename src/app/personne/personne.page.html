@@ -18,7 +18,11 @@
     <ion-list>
       <ion-item-sliding *ngFor="let personne of usedPersonnes | filterPersonnes:value" > 
         <ion-item>
-          <ion-icon name="person-outline" slot="start"></ion-icon>
+          <ion-icon *ngIf="personne.image === undefined || personne.image === '' " name="person-outline" slot="start"></ion-icon>
+          <ion-avatar *ngIf="personne.image !== undefined && personne.image !== '' "  slot="start">
+              <img [src]="personne.image" alt="photo">
+          </ion-avatar> 
+          <span></span>
           <ion-label>{{personne.firstName}} {{personne.lastName}}</ion-label>
           <ion-icon name="star" *ngIf="personne.favory === 'Favory'"></ion-icon> 
           <ion-icon name="star-half" *ngIf="personne.favory === 'Half' "></ion-icon> 

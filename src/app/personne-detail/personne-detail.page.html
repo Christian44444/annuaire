@@ -15,7 +15,7 @@
     <ion-thumbnail slot="start">
       <!-- image par défaut au cas où -->
       <ion-img *ngIf="personneSav.image === undefined || personneSav.image === ''" [src]="'assets' + '/' +'image' + '/' + 'plus.png'" (click)="chargePicture()"/>
-      <ion-img *ngIf="personneSav.image !== undefined && personneSav.image !== ''" [src]="personneSav.image" (click)="chargePicture()"/>
+      <ion-img *ngIf="personneSav.image !== undefined && personneSav.image !== ''" [src]="personneSav.image" alt="photo" (click)="chargePicture()"/>
     </ion-thumbnail>
     <div> </div>
   </ion-item>
